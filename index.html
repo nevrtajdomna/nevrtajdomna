@@ -1,14 +1,389 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>nevrtaj-do-mna</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Ferrata Builders - Our Team</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: 
+                linear-gradient(135deg, rgba(245, 247, 250, 0.8) 0%, rgba(195, 207, 226, 0.8) 100%),
+                url('bg-sedielko.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Team Section */
+        .team-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            border-radius: 2px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #3498db, #2ecc71, #e74c3c);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover .member-photo {
+            transform: scale(1.05);
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .member-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .project-item:last-child {
+            border-bottom: none;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: #7f8c8d;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-details {
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            background: #3498db;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #95a5a6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .member-photo {
+                width: 150px;
+                height: 150px;
+                font-size: 2rem;
+            }
+
+            .projects-section {
+                padding: 2rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Animation */
+        .team-member {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .team-member:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .team-member:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-  <p>
-    Tomas - prezident
-    Vlado - robos (aspirant na prezidenta)
-    Jaro - prezident
-  </p>
+    <header>
+        <div class="container">
+            <h1>nevrtaj_do_mna</h1>
+            <h2>Mountain Ferrata Builders</h2>
+            <p class="subtitle">Skúsení a zanietení pracanti pre vaše bezpečné potulky horami</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Team Section -->
+        <section class="team-section">
+            <h2 class="section-title">Náš tím</h2>
+            
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-member">
+                    <!-- <div class="member-photo">A</div> -->
+                    <img src="nesto.png" alt="Nešťo" class="member-photo">
+                    <h3 class="member-name">Nešťo</h3>
+                    <p class="member-role">Prezident - Lead Engineer & Safety Expert</p>
+                    <p class="member-description">
+                        S viac ako 25-ročnými skúsenosťami v horolezectve sa Nešťo špecializuje na inžinierstvo ferrat a protokoly horskej bezpečnosti. Je nadšencom vytvárania bezpečných horolezeckých trás, ktoré zachovávajú prírodnú krásu. 
+                    </p>
+                    <p class="member-description">
+                        Jeho hlavným zameraním je extrémny skialpinizmus a z.
+                    </p>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-member">
+                    <img src="vladik.png" alt="Vladík" class="member-photo">
+                    <h3 class="member-name">Vladík</h3>
+                    <p class="member-role">Inžinier - Nadšenec a dobrovoľník</p>
+                    <p class="member-description">
+                         Vladova silná stránka je, že je výnimočným pracovníkom. Je silný, pracovitý, veselý a vždy ochotný dať zo seba 120 percent a splniť úlohu včas. Nepotrebuje prestávky, len prácu.
+                    </p>
+                    <p class="member-description">
+                        Je radosťou pre všetkých s ním pracovať.
+                    </p>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-member">
+                    <img src="jarino.jpg" alt="Jarino" class="member-photo">
+                    <h3 class="member-name">Jarino</h3>
+                    <p class="member-role">Projektový koordinátor - Inžinier a tester bezpečnosti</p>
+                    <p class="member-description">
+                        Jarino objavil svoju lásku k horám a dobrodružstvu už v mladom veku. V horách nachádza pokoj a nové výzvy. Je to pohodový človek s veľkým zmyslom pre humor. Vie, ako tvrdo pracovať, keď je to potrebné, ale vie si aj užívať malé radosti života.
+                    </p>
+                    <p class="member-description">
+                        Jeho snom bolo vždy pracovať v skvelom tíme v srdci hôr :).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section">
+            <h2 class="section-title">Naše projekty</h2>
+            
+            <div class="project-item">
+                <h3 class="project-title">Výstup do Sedielka - Subdodávka</h3>
+                <p class="project-description">
+                    Pomoc pri budovaní novej zaistenej cesty na Sedielko v Tatrách. Práca zahŕňala inštaláciu oceľových reťazí, kotvenie a zabezpečenie trasy pre bezpečný výstup turistov. Tvorbu drevených izbíc a dláždenie chodníkov.
+                </p>
+                <p class="project-details">Date: September 2026 • Location: TANAP • Duration: 4 days • Volunteers: 3</p>
+            </div>
+
+            <div class="project-item">
+                <h3 class="project-title">Vianočná párty </h3>
+                <p class="project-description">
+                    Rozprúdenie zábavy na našej každoročnej vianočnej párty pre členov tímu a ich rodiny. Usporiadanie hier, súťaží a výmeny darčekov, aby sme oslávili úspešný rok plný dobrodružstiev a projektov.
+                </p>
+                <p class="project-details">Date: December 2026 • Location: Bratislava Incheba • Duration: 6 hours • Volunteers: 3</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h3 class="footer-title">Kontakt</h3>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <span>info@nevrtajdomna.sk</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span>+421 903 801 128 (Jarino)</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>...kancel zatial nemame</span>
+                </div>
+            </div>
+
+            <p class="footer-note">
+                Building safe mountain adventures through volunteer dedication and expert engineering.
+                <br>© 2026 NevrtajDoMna. All rights reserved.
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
